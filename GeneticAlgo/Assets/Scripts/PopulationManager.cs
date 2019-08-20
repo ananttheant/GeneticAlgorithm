@@ -56,15 +56,13 @@ public class PopulationManager : MonoBehaviour
     {
         guiStyle.fontSize = 20;
         guiStyle.normal.textColor = Color.white;
-
-        GUI.Label(new Rect(10, 10, 100, 20), "Generation " + generation, guiStyle);
-        GUI.Label(new Rect(10, 65, 100, 20), "Trial Time " + (int)elapsed, guiStyle);
+        GUI.Label(new Rect(10, 10, 100, 20), "Select Bighest to dullest ", guiStyle);
+        GUI.Label(new Rect(10, 10 +55, 100, 20), "Generation " + generation, guiStyle);
+        GUI.Label(new Rect(10, 10 + 55 + 55, 100, 20), "Trial Time " + (int)elapsed, guiStyle);
     }
 
     void breedNewPopulation()
-    {
-        List<GameObject> newPopulation = new List<GameObject>();
-
+    {      
         //get rid of the unfit 
         List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<DNA>().timeToDie).ToList();
 
