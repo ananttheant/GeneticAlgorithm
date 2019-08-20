@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DNA.cs" />
+    <Compile Include="Assets\Scripts\PopulationManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Unity Projects/GeneticAlgorithm/GeneticAlgorithm/GeneticAlgo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
