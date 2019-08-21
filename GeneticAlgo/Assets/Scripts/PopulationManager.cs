@@ -18,6 +18,9 @@ public class PopulationManager : MonoBehaviour
 
     int generation = 1;
 
+    const float minSize = 0.1f;
+    const float maxSize = 0.3f;
+
     [SerializeField]
     int PopulationSize = 8;
 
@@ -38,6 +41,7 @@ public class PopulationManager : MonoBehaviour
             go.GetComponent<DNA>().r = Random.Range(0F, 1F);
             go.GetComponent<DNA>().g = Random.Range(0F, 1F);
             go.GetComponent<DNA>().b = Random.Range(0F, 1F);
+            go.GetComponent<DNA>().size = Random.Range(minSize, maxSize);
 
             population.Add(go);
         }
@@ -101,10 +105,21 @@ public class PopulationManager : MonoBehaviour
         DNA dna1 = parent1.GetComponent<DNA>();
         DNA dna2 = parent2.GetComponent<DNA>();
 
-        //Mix the Genes
-        offspring.GetComponent<DNA>().r = Random.Range(0, 10) < 5 ? dna1.r : dna2.r;
-        offspring.GetComponent<DNA>().g = Random.Range(0, 10) < 5 ? dna1.g : dna2.g;
-        offspring.GetComponent<DNA>().b = Random.Range(0, 10) < 5 ? dna1.b : dna2.b;
+        //Mix the Genes or go for the mutation
+        if (Random.Range(0, 1000) > 5)
+        {
+            offspring.GetComponent<DNA>().r = Random.Range(0, 10) < 5 ? dna1.r : dna2.r;
+            offspring.GetComponent<DNA>().g = Random.Range(0, 10) < 5 ? dna1.g : dna2.g;
+            offspring.GetComponent<DNA>().b = Random.Range(0, 10) < 5 ? dna1.b : dna2.b;
+            offspring.GetComponent<DNA>().size = Random.Range(0, 10) < 5 ? dna1.size : dna2.size;
+        }
+        else
+        {
+            offspring.GetComponent<DNA>().r = Random.Range(0.0f, 1.0f);
+            offspring.GetComponent<DNA>().g = Random.Range(0.0f, 1.0f);
+            offspring.GetComponent<DNA>().b = Random.Range(0.0f, 1.0f);
+            offspring.GetComponent<DNA>().size = Random.Range(minSize, maxSize);
+        }
 
         return offspring;
     }

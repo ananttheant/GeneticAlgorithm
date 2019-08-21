@@ -8,6 +8,7 @@ public class DNA : MonoBehaviour
     public float r;
     public float g;
     public float b;
+    public float size;
 
     //Is this generation being taken for the next generation
     bool isDead = false;
@@ -29,8 +30,17 @@ public class DNA : MonoBehaviour
 
         sCollider = GetComponent<Collider2D>();
 
+        SetDNA();
+    }
+
+    /// <summary>
+    /// Sets the Gene values to the agent
+    /// </summary>
+    void SetDNA()
+    {
         sRenderer.color = new Color(r, g, b);
 
+        transform.localScale = new Vector3(size, size, size);
     }
 
     /// <summary>
